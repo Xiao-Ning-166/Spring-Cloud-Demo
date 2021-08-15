@@ -1,0 +1,22 @@
+server:
+  port: 83    #微服务端口号
+spring:
+  application:
+    name: sentinel-consumer-service   #微服务名称
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848   #nacaos作为服务注册中心的地址
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080     #sentinel地址
+        port: 8719      #默认8719端口
+
+#激活 sentinel 对 fegin的支持
+feign:
+  sentinel:
+    enabled: true
+
+#要调用的微服务的 url 地址
+server-url:
+  payment-service: http://sentinel-provider-service

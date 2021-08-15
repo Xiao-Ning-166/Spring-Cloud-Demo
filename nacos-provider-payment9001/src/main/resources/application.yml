@@ -1,0 +1,17 @@
+server:
+  port: 9001    # 微服务端口号
+
+spring:
+  application:
+    name: nacos-provider-service  # 微服务名称
+  # nacos配置
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848   # nacos的地址
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

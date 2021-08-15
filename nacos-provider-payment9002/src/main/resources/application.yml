@@ -1,0 +1,18 @@
+server:
+  port: 9002  # 微服务端口号
+
+spring:
+  application:
+    name: nacos-provider-service  # 微服务名称
+  # nacos 相关配置
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.254.100:1111   #集群的统一端口
+        #server-addr: 127.0.0.1:8848
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

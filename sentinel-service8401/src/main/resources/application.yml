@@ -1,0 +1,30 @@
+server:
+  port: 8401    # 微服务端口号
+
+spring:
+  application:
+    name: sentinel-service8401
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848   # nacos作为服务注册中心的地址
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080     # sentinel地址
+        # 默认8719端口号，假如被占用会自动＋1，扫描，值之找到未被占用的端口
+        port: 8719
+      #sentinel规则持久化进nacos的相关配置
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            dataId: ${spring.application.name}
+            groupId: DEFAULT_GROUP
+            data_type: json
+            rule_type: flow
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

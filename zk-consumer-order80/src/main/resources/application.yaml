@@ -1,0 +1,11 @@
+server:
+  port: 80  # 微服务的端口号
+
+spring:
+  application:
+    name: zk-order-service  # 微服务的名称
+
+  # zookeeper 注册中心配置
+  cloud:
+    zookeeper:
+      connect-string: 192.168.254.100:2181  # zookeeper地址

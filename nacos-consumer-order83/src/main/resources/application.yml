@@ -1,0 +1,17 @@
+server:
+  port: 83  # 微服务端口号
+
+spring:
+  application:
+    name: nacos-consumer-service  # 微服务名称
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+
+# 消费者要访问的微服务名称（不是必需）
+# 相当于原来的 controller 类中的常量
+service-uri:
+  payment-service: http://nacos-provider-service

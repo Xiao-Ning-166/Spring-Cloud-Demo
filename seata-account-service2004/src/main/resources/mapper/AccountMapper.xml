@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.hue.springcloud.dao.AccountDao">
+
+    <resultMap id="BastResultMap" type="edu.hue.springcloud.domian.Account">
+        <id column="id" property="id"></id>
+        <result column="user_id" property="userId"></result>
+        <result column="total" property="total"></result>
+        <result column="used" property="used"></result>
+        <result column="residue" property="residue"></result>
+    </resultMap>
+
+    <!-- 根据用户id，使用金额更新账户余额 -->
+    <update id="updateAccount">
+        update
+            account_tbl
+        set
+            used = used + #{money}, residue = residue - #{money}
+        where
+            user_id = #{userId}
+    </update>
+
+</mapper>

@@ -1,0 +1,28 @@
+server:
+  port: 8006  # 微服务的端口号
+
+spring:
+  application:
+    name: consul-payment-service  # 微服务的名称
+  # consul注册中心配置
+  cloud:
+    consul:
+      host: 192.168.254.100
+      port: 8500
+      discovery:
+#        hostname: 192.168.254.100
+        service-name: ${spring.application.name}
+        heartbeat:
+          enabled: true   #开启心跳机制
+
+
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver    # mysql驱动包类型
+    type: com.alibaba.druid.pool.DruidDataSource  # 当前数据源操作类型
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf-8&useSSL=false
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: edu.hue.springclooud.entity #所有别名类所在包
